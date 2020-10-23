@@ -1,0 +1,28 @@
+name: Build a project inside docker image
+
+on:
+  push:
+    branches: '*'
+  pull_request:
+    branches: '*'
+
+jobs:
+  build-micropython:
+    runs-on: ubuntu-latest
+    container: ghcr.io/carlosperate/ubit-toolchain
+    steps:
+      - name: Check Versions
+        run: |
+          arm-none-eabi-gcc --version
+          cmake --version
+          ninja --version
+          srec_cat --version
+      - name: Clone MicroPython
+        run: |
+          git clone https://github.com/bbcmicrobit/micropython.git
+      - name: Build MicroPython
+        run: |
+          cd micropython
+          yt target bbc-microbit-classic-gcc-nosd
+          yt up
+          make all
