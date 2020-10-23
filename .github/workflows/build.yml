@@ -17,6 +17,7 @@ jobs:
           cmake --version
           ninja --version
           srec_cat --version
+
       - name: Clone MicroPython
         run: git clone https://github.com/bbcmicrobit/micropython.git
       - name: Build MicroPython
@@ -25,6 +26,7 @@ jobs:
           yt target bbc-microbit-classic-gcc-nosd
           yt up
           make all
+
       - name: Clone microbit-samples
         run: git clone https://github.com/lancaster-university/microbit-samples.git
       - name: Build DAL samples
@@ -33,3 +35,10 @@ jobs:
           yt target bbc-microbit-classic-gcc
           yt up
           yt build
+
+      - name: Clone micro:bit v2 samples
+        run: git clone https://github.com/lancaster-university/microbit-v2-samples.git
+      - name: Build CODAL samples
+        run: |
+          cd microbit-v2-samples
+          python build.py
