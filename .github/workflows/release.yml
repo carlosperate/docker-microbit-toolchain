@@ -1,4 +1,4 @@
-name: Deploy images with latest and versioned tags
+name: Deploy versioned & latest
 
 on:
   release:

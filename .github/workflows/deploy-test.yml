@@ -1,4 +1,4 @@
-name: Deploy master image and build several projects inside
+name: Deploy master & test builds
 
 on:
   push:
