@@ -18,14 +18,14 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.CR_PAT }}
       - name: Build image
-        run: docker build -t ghcr.io/${{ github.repository_owner }}/ubit-toolchain:master .
+        run: docker build -t ghcr.io/${{ github.repository_owner }}/microbit-toolchain:master .
       - name: Push master tag to ghcr.io
-        run: docker push ghcr.io/${{ github.repository_owner }}/ubit-toolchain:master
+        run: docker push ghcr.io/${{ github.repository_owner }}/microbit-toolchain:master
 
   build-projects:
     needs: deploy
     runs-on: ubuntu-latest
-    container: ghcr.io/carlosperate/ubit-toolchain:master
+    container: ghcr.io/carlosperate/microbit-toolchain:master
     steps:
       - name: Check Versions
         run: |

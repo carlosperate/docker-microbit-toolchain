@@ -4,7 +4,7 @@
 ARG VARIANT="buster"
 
 #FROM buildpack-deps:${VARIANT}-curl
-FROM ghcr.io/carlosperate/ubit-toolchain:latest
+FROM ghcr.io/carlosperate/microbit-toolchain:latest
 
 # Use the [Option] comment to specify true/false arguments that should appear in VS Code UX
 #

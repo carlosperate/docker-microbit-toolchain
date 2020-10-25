@@ -9,7 +9,7 @@ Docker image with the micro:bit toolchain.
 Build the docker image:
 
 ```
-docker build -t "ubit-toolchain" .
+docker build -t "microbit-toolchain" .
 ```
 
 For better traceability it's good to save the build output, so preferably do:
@@ -19,13 +19,13 @@ For better traceability it's good to save the build output, so preferably do:
 Run a bash session (launches a new container) inside an existing docker image:
 
 ```
-docker run --name ubit-toolchain-container -it --entrypoint /bin/bash ubit-toolchain
+docker run --name microbit-toolchain-container -it --entrypoint /bin/bash microbit-toolchain
 ```
 
 ### Copy files from docker to host
 
 ```
-docker cp ubit-toolchain-container:/home/artefacts .
+docker cp microbit-toolchain-container:/home/artefacts .
 ```
 
 ### Publish image
@@ -33,6 +33,6 @@ docker cp ubit-toolchain-container:/home/artefacts .
 ```
 docker login ghcr.io -u <your_username>
 docker images
-docker tag IMAGE_ID ghcr.io/carlosperate/ubit-toolchain:VERSION
-docker push ghcr.io/carlosperate/ubit-toolchain:VERSION
+docker tag IMAGE_ID ghcr.io/carlosperate/microbit-toolchain:VERSION
+docker push ghcr.io/carlosperate/microbit-toolchain:VERSION
 ```
