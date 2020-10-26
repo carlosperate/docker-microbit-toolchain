@@ -31,7 +31,7 @@ jobs:
 
   deploy-devcontainer:
     name: Deploy devcontainer
-    needs: deploy
+    needs: deploy-base
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

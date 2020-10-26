@@ -3,11 +3,10 @@ name: Deploy master & test builds
 on:
   push:
     branches: [master, ci]
-  release:
-    types: [published]
 
 jobs:
   deploy:
+    name: Deploy master tag image
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -23,6 +22,7 @@ jobs:
         run: docker push ghcr.io/${{ github.repository_owner }}/microbit-toolchain:master
 
   build-projects:
+    name: Run test builds in master tag image
     needs: deploy
     runs-on: ubuntu-latest
     container: ghcr.io/carlosperate/microbit-toolchain:master
