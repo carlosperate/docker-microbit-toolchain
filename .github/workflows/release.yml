@@ -26,8 +26,8 @@ jobs:
         run: docker tag ghcr.io/${{ github.repository_owner }}/microbit-toolchain:latest ghcr.io/${{ github.repository_owner }}/microbit-toolchain:${{ steps.get_version.outputs.VERSION }}
       - name: Push base images to ghcr.io
         run: |
-          docker push ghcr.io/${{ github.repository_owner }}/microbit-toolchain:latest
           docker push ghcr.io/${{ github.repository_owner }}/microbit-toolchain:${{ steps.get_version.outputs.VERSION }}
+          docker push ghcr.io/${{ github.repository_owner }}/microbit-toolchain:latest
 
   deploy-devcontainer:
     name: Deploy devcontainer
