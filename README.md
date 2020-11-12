@@ -2,6 +2,18 @@
 
 Docker image with the micro:bit toolchain.
 
+![docker-microbit](https://user-images.githubusercontent.com/4189262/99010611-3445f000-2542-11eb-90d8-0983d37de762.png)
+
+Useful to be able to compile C/C++ programmes using DAL or CODAL.
+This includes projects like MicroPython.
+
+Also includes a Docker image ready to be used with
+GitHub Codespaces](https://github.com/features/codespaces) and build your
+micro:bit projects on the cloud.
+
+![codespaces](https://user-images.githubusercontent.com/4189262/99011128-48d6b800-2543-11eb-89a7-738ff64e379a.png)
+
+
 ## Instructions
 
 ### Build docker image
