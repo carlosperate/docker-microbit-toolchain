@@ -27,8 +27,8 @@ docker pull ghcr.io/carlosperate/microbit-toolchain:master
 You can find more info about the image here:
 https://github.com/users/carlosperate/packages/container/package/microbit-toolchain
 
-To use this image in your project you can run a container from this image
-following this format:
+To use a Docker image to build your project you can create and run a Docker
+container from an image following this format:
 
 ```
 docker run -v $(pwd):/home --rm <image_name>:<image_version> <build_command>
@@ -39,9 +39,10 @@ Where:
   inside the docker container `/home` path
 - `--rm` flag will clean up the container created for the build
 - `<image_name>:<image_version>` is the image you want to use to create the
-  container, if you've built this image locally from the Dockerfile in this
-  repository you can use whatever name you've given it, or you can download the images from this repository using
-  `ghcr.io/carlosperate/microbit-toolchain:latest`
+  container. If you've built this image locally from the Dockerfile in this
+  repository you can use whatever name you've given it, or you can use
+  `ghcr.io/carlosperate/microbit-toolchain:latest` to automatically download
+  and use this image
 - `<build_command>` should be replaced with whatever build command is needed for
   your project. For example, for a CODAL project that would be `python build.py`
   ([info in their README](https://github.com/lancaster-university/microbit-v2-samples/tree/v0.2.11#building))
@@ -52,8 +53,10 @@ The build steps from this example have been obtained from the
 [project README](https://github.com/lancaster-university/microbit-samples/blob/v2.1.1/README.md).
 
 ```bash
+# Clone the repository
 $ git clone https://github.com/lancaster-university/microbit-samples
 $ cd microbit-samples
+# Build it using this docker image
 $ docker run -v $(pwd):/home --rm ghcr.io/carlosperate/microbit-toolchain:latest yotta build
 ```
 
@@ -63,8 +66,10 @@ The build steps from this example have been obtained from the
 [project README](https://github.com/lancaster-university/microbit-v2-samples/blob/v0.2.11/README.md).
 
 ```bash
+# Clone the repository
 $ git clone https://github.com/lancaster-university/microbit-v2-samples.git
 $ cd microbit-v2-samples
+# Build it using this docker image
 $ docker run -v $(pwd):/home --rm ghcr.io/carlosperate/microbit-toolchain:latest python build.py
 ```
 
@@ -74,11 +79,12 @@ The build steps from this example have been obtained from the
 [project README](https://github.com/bbcmicrobit/micropython/blob/v1.0.1/README.md).
 
 ```bash
+# Clone the repository
 $ git clone https://github.com/bbcmicrobit/micropython.git
 $ cd micropython
-# First we prepare the project, this initial docker command only has to be run once
+# First prepare the project, this initial docker command only has to be run once
 $ docker run -v $(pwd):/home --rm ghcr.io/carlosperate/microbit-toolchain:latest yt target bbc-microbit-classic-gcc-nosd && yt up
-# Now we are ready to build
+# Now we are ready to build it
 $ docker run -v $(pwd):/home --rm ghcr.io/carlosperate/microbit-toolchain:latest make all
 ```
 
@@ -88,6 +94,7 @@ The build steps from this example have been obtained from the
 [project README](https://github.com/microbit-foundation/micropython-microbit-v2/blob/v2.0.0-beta.1/README.md).
 
 ```bash
+# Clone the repository
 $ git clone https://github.com/microbit-foundation/micropython-microbit-v2.git
 $ cd micropython-microbit-v2
 $ git submodule update --init
