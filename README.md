@@ -47,7 +47,7 @@ Where:
   your project. For example, for a CODAL project that would be `python build.py`
   ([info in their README](https://github.com/lancaster-university/microbit-v2-samples/tree/v0.2.11#building))
 
-### Example: DAL
+### Example: DAL (V1 C++ Samples)
 
 The build steps from this example have been obtained from the
 [project README](https://github.com/lancaster-university/microbit-samples/blob/v2.1.1/README.md).
@@ -60,7 +60,7 @@ $ cd microbit-samples
 $ docker run -v $(pwd):/home --rm ghcr.io/carlosperate/microbit-toolchain:latest yotta build
 ```
 
-### Example: CODAL
+### Example: CODAL (V2 C++ Samples)
 
 The build steps from this example have been obtained from the
 [project README](https://github.com/lancaster-university/microbit-v2-samples/blob/v0.2.11/README.md).
