@@ -40,7 +40,7 @@ jobs:
       - name: Build MicroPython
         run: |
           cd micropython
-          yt target bbc-microbit-classic-gcc-nosd
+          yotta target bbc-microbit-classic-gcc-nosd@https://github.com/lancaster-university/yotta-target-bbc-microbit-classic-gcc-nosd
           yt up
           make all
 
