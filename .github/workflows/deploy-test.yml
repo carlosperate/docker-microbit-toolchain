@@ -40,7 +40,7 @@ jobs:
       - name: Build MicroPython
         run: |
           cd micropython
-          yotta target bbc-microbit-classic-gcc-nosd@https://github.com/lancaster-university/yotta-target-bbc-microbit-classic-gcc-nosd
+          yt target bbc-microbit-classic-gcc-nosd@https://github.com/lancaster-university/yotta-target-bbc-microbit-classic-gcc-nosd
           yt up
           make all
 
@@ -49,8 +49,6 @@ jobs:
       - name: Build DAL samples
         run: |
           cd microbit-samples
-          yt target bbc-microbit-classic-gcc
-          yt up
           yt build
 
       - name: Clone microbit-v2-samples
