@@ -16,33 +16,28 @@ micro:bit projects on the cloud.
 
 ## How to use this Docker image to build your micro:bit project
 
-The docker image is hosted in the
+The Docker image is hosted in the
 [GitHub Container Registry](https://github.blog/2020-09-01-introducing-github-container-registry/)
 and can be fetch with this command:
 
 ```
-docker pull ghcr.io/carlosperate/microbit-toolchain:master
+docker pull ghcr.io/carlosperate/microbit-toolchain:latest
 ```
 
 You can find more info about the image here:
 https://github.com/users/carlosperate/packages/container/package/microbit-toolchain
 
-To use a Docker image to build your project you can create and run a Docker
-container from an image following this format:
+You can run this Docker image to build your project with a command like this:
 
 ```
-docker run -v $(pwd):/home --rm <image_name>:<image_version> <build_command>
+docker run -v $(pwd):/home --rm ghcr.io/carlosperate/microbit-toolchain:latest <build_command>
 ```
 
 Where:
-- `-v $(pwd):/home` flag mounts your current working directory as a volume
-  inside the docker container `/home` path
+- `-v $(pwd):/home` flag mounts your PC current working directory as a volume
+  inside the docker container `/home` path, which is also the container default
+  working directory
 - `--rm` flag will clean up the container created for the build
-- `<image_name>:<image_version>` is the image you want to use to create the
-  container. If you've built this image locally from the Dockerfile in this
-  repository you can use whatever name you've given it, or you can use
-  `ghcr.io/carlosperate/microbit-toolchain:latest` to automatically download
-  and use this image
 - `<build_command>` should be replaced with whatever build command is needed for
   your project. For example, for a CODAL project that would be `python build.py`
   ([info in their README](https://github.com/lancaster-university/microbit-v2-samples/tree/v0.2.11#building))
