@@ -78,7 +78,7 @@ The build steps from this example have been obtained from the
 $ git clone https://github.com/bbcmicrobit/micropython.git
 $ cd micropython
 # First prepare the project, this initial docker command only has to be run once
-$ docker run -v $(pwd):/home --rm ghcr.io/carlosperate/microbit-toolchain:latest yt target bbc-microbit-classic-gcc-nosd && yt up
+$ docker run -v $(pwd):/home --rm ghcr.io/carlosperate/microbit-toolchain:latest yt target bbc-microbit-classic-gcc-nosd@https://github.com/lancaster-university/yotta-target-bbc-microbit-classic-gcc-nosd && yt up
 # Now we are ready to build it
 $ docker run -v $(pwd):/home --rm ghcr.io/carlosperate/microbit-toolchain:latest make all
 ```
