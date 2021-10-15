@@ -22,8 +22,8 @@ jobs:
       - name: Push master tag to ghcr.io
         run: docker push ghcr.io/${{ github.repository_owner }}/microbit-toolchain:master
 
-  build-projects:
-    name: Run test builds in master tag image
+  build-uPy-v1:
+    name: MicroPython V1 test build with master tag image
     needs: deploy
     runs-on: ubuntu-latest
     container: ghcr.io/carlosperate/microbit-toolchain:master
@@ -33,8 +33,8 @@ jobs:
           arm-none-eabi-gcc --version
           cmake --version
           ninja --version
+          yotta --version
           srec_cat --version
-
       - name: Clone MicroPython
         run: git clone https://github.com/bbcmicrobit/micropython.git
       - name: Build MicroPython
@@ -44,6 +44,19 @@ jobs:
           yt up
           make all
 
+  build-dal:
+    name: DAL test build with master tag image
+    needs: deploy
+    runs-on: ubuntu-latest
+    container: ghcr.io/carlosperate/microbit-toolchain:master
+    steps:
+      - name: Check Versions
+        run: |
+          arm-none-eabi-gcc --version
+          cmake --version
+          ninja --version
+          yotta --version
+          srec_cat --version
       - name: Clone microbit-samples
         run: git clone https://github.com/lancaster-university/microbit-samples.git
       - name: Build DAL samples
@@ -51,6 +64,45 @@ jobs:
           cd microbit-samples
           yt build
 
+  build-uPy-v2:
+    name: MicroPython V2 test build with master tag image
+    needs: deploy
+    runs-on: ubuntu-latest
+    container: ghcr.io/carlosperate/microbit-toolchain:master
+    steps:
+      - name: Check Versions
+        run: |
+          arm-none-eabi-gcc --version
+          cmake --version
+          ninja --version
+          yotta --version
+          srec_cat --version
+      - name: Clone MicroPython
+        run: |
+          git clone https://github.com/microbit-foundation/micropython-microbit-v2.git
+          cd micropython-microbit-v2
+          git submodule update --init
+          cd ..
+      - name: Build MicroPython
+        run: |
+          cd micropython-microbit-v2
+          make -C lib/micropython/mpy-cross PYTHON=python3
+          cd src
+          make
+
+  build-codal:
+    name: CODAL test build with master tag image
+    needs: deploy
+    runs-on: ubuntu-latest
+    container: ghcr.io/carlosperate/microbit-toolchain:master
+    steps:
+      - name: Check Versions
+        run: |
+          arm-none-eabi-gcc --version
+          cmake --version
+          ninja --version
+          yotta --version
+          srec_cat --version
       - name: Clone microbit-v2-samples
         run: git clone https://github.com/lancaster-university/microbit-v2-samples.git
       - name: Build CODAL samples
