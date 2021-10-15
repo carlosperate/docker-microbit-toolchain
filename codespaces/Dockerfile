@@ -1,9 +1,3 @@
-# Use the [Choice] comment to indicate option arguments that should appear in VS Code UX
-#
-# [Choice] Debian OS version: buster, stretch
-ARG VARIANT="buster"
-
-#FROM buildpack-deps:${VARIANT}-curl
 FROM ghcr.io/carlosperate/microbit-toolchain:latest
 
 # Use the [Option] comment to specify true/false arguments that should appear in VS Code UX

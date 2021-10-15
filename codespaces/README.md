@@ -1,6 +1,5 @@
 # Codespaces image
 
-
 - Template based on
   https://github.com/microsoft/vscode-dev-containers/tree/v0.146.0/container-templates
 - common-debian.sh:
