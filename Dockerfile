@@ -1,10 +1,11 @@
 FROM ubuntu:focal
 
-# Installing build tools, python and git
+# Installing build tools, git, python3 and setting it as the default python
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -qq && \
     apt-get install -y --no-install-recommends wget git build-essential srecord && \
-    apt-get install -y --no-install-recommends python3 python3-setuptools python3-pip && \
+    apt-get install -y --no-install-recommends python3 python3-pip && \
+    update-alternatives --install /usr/bin/python python /usr/bin/python3 1 && \
     apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 # Installing Arm GCC
@@ -21,8 +22,7 @@ ENV PATH $PATH:/opt/gcc-arm-none-eabi-10-2020-q4-major/bin
 # Installing Yotta, Cmake, and Ninja
 COPY requirements.txt /home/
 RUN python3 -m pip --no-cache-dir install --upgrade pip && \
-    pip --no-cache-dir install -r /home/requirements.txt && \
-    rm /home/requirements.txt && \
-    ln -s /usr/bin/python3 /usr/bin/python
+    python3 -m pip --no-cache-dir install -r /home/requirements.txt && \
+    rm /home/requirements.txt
 
 WORKDIR /home/
