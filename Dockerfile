@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:focal
 
 # Installing build tools, python and git
 ENV DEBIAN_FRONTEND=noninteractive
@@ -23,7 +23,6 @@ COPY requirements.txt /home/
 RUN python3 -m pip --no-cache-dir install --upgrade pip && \
     pip --no-cache-dir install -r /home/requirements.txt && \
     rm /home/requirements.txt && \
-    ln -s /usr/bin/python3 /usr/bin/python && \
-    ln -s /usr/bin/pip3 /usr/bin/pip
+    ln -s /usr/bin/python3 /usr/bin/python
 
 WORKDIR /home/
