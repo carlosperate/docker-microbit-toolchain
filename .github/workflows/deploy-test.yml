@@ -129,8 +129,8 @@ jobs:
           cd DAPLink
           git checkout -b develop origin/develop
       - name: Install Python dependencies
+        working-directory: DAPLink
         run: pip install -r requirements.txt
       - name: Build all micro:bit DAPLink projects
-        run: |
-          cd DAPLink
-          python tools/progen_compile.py -t make_gcc_arm kl26z_bl kl26z_microbit_if kl27z_microbit_bl kl27z_microbit_if nrf52820_microbit_bl nrf52820_microbit_if
+        working-directory: DAPLink
+        run: python tools/progen_compile.py -t make_gcc_arm kl26z_bl kl26z_microbit_if kl27z_microbit_bl kl27z_microbit_if nrf52820_microbit_bl nrf52820_microbit_if
