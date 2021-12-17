@@ -99,6 +99,23 @@ $ docker run -v $(pwd):/home --rm ghcr.io/carlosperate/microbit-toolchain:latest
 $ docker run -v $(pwd):/home --rm ghcr.io/carlosperate/microbit-toolchain:latest bash -c "cd src && make"
 ```
 
+### Example: DAPLink for micro:bit V2
+
+The build steps from this example have been obtained from the
+[project developer's guide](https://github.com/ARMmbed/DAPLink/blob/develop/docs/DEVELOPERS-GUIDE.md).
+
+```bash
+# Clone the repository
+$ git clone https://github.com/mbedmicro/DAPLink
+$ cd DAPLink
+$ git checkout -b develop origin/develop
+# Install the Python dependencies in a venv saved in the project directory
+$ docker run -v $(pwd):/home --rm ghcr.io/carlosperate/microbit-toolchain:latest bash -c "pip install virtualenv && virtualenv venv && source venv/bin/activate && pip install -r requirements.txt"
+# Install the Python dependencies inside the docker image and run the build script
+$ docker run -v $(pwd):/home --rm ghcr.io/carlosperate/microbit-toolchain:latest bash -c "source venv/bin/activate && python tools/progen_compile.py -t make_gcc_arm kl27z_microbit_if"
+```
+
+
 ## How to use this Docker Image with GitHub Codespaces
 
 This section of the docs is still a WIP.
@@ -126,13 +143,4 @@ docker run --name microbit-toolchain-container -it --entrypoint /bin/bash microb
 
 ```
 docker cp microbit-toolchain-container:/home/artefacts .
-```
-
-### Publish image
-
-```
-docker login ghcr.io -u <your_username>
-docker images
-docker tag IMAGE_ID ghcr.io/carlosperate/microbit-toolchain:VERSION
-docker push ghcr.io/carlosperate/microbit-toolchain:VERSION
 ```
