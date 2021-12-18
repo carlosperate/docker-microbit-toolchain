@@ -1,5 +1,8 @@
 FROM ubuntu:focal
 
+LABEL maintainer="Carlos Pereira Atencio <carlosperate@embeddedlog.com>"
+LABEL Description="Image with the micro:bit toolchain"
+
 # Installing build tools, git, python3 and setting it as the default python
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -qq && \
