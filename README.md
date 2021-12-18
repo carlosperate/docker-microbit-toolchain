@@ -4,8 +4,9 @@ Docker image with the micro:bit toolchain.
 
 ![docker-microbit](https://user-images.githubusercontent.com/4189262/99010611-3445f000-2542-11eb-90d8-0983d37de762.png)
 
-Useful to be able to compile C/C++ programmes using DAL or CODAL.
-This includes projects like MicroPython.
+Useful to be able to compile C/C++ programmes using the DAL or CODAL micro:bit
+runtime, which includes projects like MicroPython. It can also be used to build
+the DAPLink project for the micro:bit interface chip.
 
 Also includes a Docker image ready to be used with
 [GitHub Codespaces](https://github.com/features/codespaces) and build your
@@ -25,7 +26,7 @@ docker pull ghcr.io/carlosperate/microbit-toolchain:latest
 ```
 
 You can find more info about the image here:
-https://github.com/users/carlosperate/packages/container/package/microbit-toolchain
+https://github.com/carlosperate/docker-microbit-toolchain/pkgs/container/microbit-toolchain
 
 You can run this Docker image to build your project with a command like this:
 
@@ -111,7 +112,7 @@ $ cd DAPLink
 $ git checkout -b develop origin/develop
 # Install the Python dependencies in a venv saved in the project directory
 $ docker run -v $(pwd):/home --rm ghcr.io/carlosperate/microbit-toolchain:latest bash -c "pip install virtualenv && virtualenv venv && source venv/bin/activate && pip install -r requirements.txt"
-# Install the Python dependencies inside the docker image and run the build script
+# Activate the Python virtual environment and run the build script
 $ docker run -v $(pwd):/home --rm ghcr.io/carlosperate/microbit-toolchain:latest bash -c "source venv/bin/activate && python tools/progen_compile.py -t make_gcc_arm kl27z_microbit_if"
 ```
 
