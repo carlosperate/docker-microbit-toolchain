@@ -79,7 +79,7 @@ The build steps from this example have been obtained from the
 $ git clone https://github.com/bbcmicrobit/micropython.git
 $ cd micropython
 # First prepare the project, this initial docker command only has to be run once
-$ docker run -v $(pwd):/home --rm ghcr.io/carlosperate/microbit-toolchain:latest yt target bbc-microbit-classic-gcc-nosd@https://github.com/lancaster-university/yotta-target-bbc-microbit-classic-gcc-nosd && yt up
+$ docker run -v $(pwd):/home --rm ghcr.io/carlosperate/microbit-toolchain:latest yt target bbc-microbit-classic-gcc-nosd@https://github.com/lancaster-university/yotta-target-bbc-microbit-classic-gcc-nosd
 # Now we are ready to build it
 $ docker run -v $(pwd):/home --rm ghcr.io/carlosperate/microbit-toolchain:latest make all
 ```
@@ -96,8 +96,8 @@ $ cd micropython-microbit-v2
 $ git submodule update --init
 # First we prepare the project, this initial docker command only has to be run once
 $ docker run -v $(pwd):/home --rm ghcr.io/carlosperate/microbit-toolchain:latest make -C lib/micropython/mpy-cross
-# Now we are ready to build. In this case since we need a shell command (cd) we need to run it with bash
-$ docker run -v $(pwd):/home --rm ghcr.io/carlosperate/microbit-toolchain:latest bash -c "cd src && make"
+# Now we are ready to build using the Makefile in the src folder
+$ docker run -v $(pwd):/home --rm ghcr.io/carlosperate/microbit-toolchain:latest make -C src
 ```
 
 ### Example: DAPLink for micro:bit V2
@@ -109,7 +109,6 @@ The build steps from this example have been obtained from the
 # Clone the repository
 $ git clone https://github.com/mbedmicro/DAPLink
 $ cd DAPLink
-$ git checkout -b develop origin/develop
 # Install the Python dependencies in a venv saved in the project directory
 $ docker run -v $(pwd):/home --rm ghcr.io/carlosperate/microbit-toolchain:latest bash -c "pip install virtualenv && virtualenv venv && source venv/bin/activate && pip install -r requirements.txt"
 # Activate the Python virtual environment and run the build script
