@@ -1,7 +1,9 @@
 FROM ubuntu:focal
 
-LABEL maintainer="Carlos Pereira Atencio <carlosperate@embeddedlog.com>"
-LABEL Description="Image with the micro:bit toolchain"
+LABEL org.opencontainers.image.title="micro:bit Toolchain"
+LABEL org.opencontainers.image.description="Docker image with the micro:bit toolchain."
+LABEL org.opencontainers.image.authors="Carlos Pereira Atencio <carlosperate@embeddedlog.com>"
+LABEL org.opencontainers.image.source="https://github.com/carlosperate/docker-microbit-toolchain"
 
 # Installing build tools, git, python3 and setting it as the default python
 ENV DEBIAN_FRONTEND=noninteractive
